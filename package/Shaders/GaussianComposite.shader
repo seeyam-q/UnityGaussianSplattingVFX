@@ -35,8 +35,11 @@ Texture2D _GaussianSplatRT;
 half4 frag (v2f i) : SV_Target
 {
     half4 col = _GaussianSplatRT.Load(int3(i.vertex.xy, 0));
+    #if !UNITY_COLORSPACE_GAMMA
     col.rgb = GammaToLinearSpace(col.rgb);
     col.a = saturate(col.a * 1.5);
+    #endif
+    
     return col;
 }
 ENDCG

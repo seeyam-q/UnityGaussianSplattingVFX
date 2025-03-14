@@ -614,6 +614,14 @@ struct SplatViewData
     uint2 color; // 4xFP16
 };
 
+struct SplatVfxData
+{
+    float4 pos;
+    float3 axisX, axisY;
+    uint colorPair1;
+    uint colorPair2; 
+};
+
 // If we are rendering into backbuffer directly (e.g. HDR off, no postprocessing),
 // the color target texture is a render target (so projection is upside down),
 // but the depth buffer we get is not upside down. We want to flip
